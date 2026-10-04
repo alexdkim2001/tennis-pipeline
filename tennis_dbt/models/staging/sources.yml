@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: workspace
+    schema: tennis_bronze
+    tables:
+      - name: atp_matches
+        description: >
+          Raw ATP match data ingested from TML-Database CSVs (2015-2025).
+          All columns loaded as strings, plus _source_file and _ingested_at
+          added by the ingestion job. See ingestion/ingest_tml.py.

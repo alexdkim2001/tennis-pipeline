@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: gold_player_overview
+    description: One row per player - career record and current ranking. Drives the dashboard's player picker and KPI tiles.
+    columns:
+      - name: player_id
+        data_tests:
+          - unique
+          - not_null
+      - name: matches_played
+        data_tests:
+          - not_null
+      - name: win_pct
+        data_tests:
+          - not_null
+
+  - name: gold_player_surface_stats
+    description: Win % by surface, per player. Drives the surface breakdown chart.
+    columns:
+      - name: player_id
+        data_tests:
+          - not_null
+      - name: surface
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ["Hard", "Clay", "Grass", "Carpet"]
+
+  - name: gold_player_ranking_history
+    description: One row per player per date a ranking was recorded. Drives the ranking-over-time line chart.
+    columns:
+      - name: player_id
+        data_tests:
+          - not_null
+      - name: tourney_date
+        data_tests:
+          - not_null
+
+  - name: gold_head_to_head
+    description: Pairwise match record between every two players who have played each other.
+    columns:
+      - name: player_id
+        data_tests:
+          - not_null
+      - name: opponent_id
+        data_tests:
+          - not_null

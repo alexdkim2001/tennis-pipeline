@@ -1,0 +1,25 @@
+name: 'tennis_dbt'
+version: '1.0.0'
+config-version: 2
+
+profile: 'tennis_dbt'
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  tennis_dbt:
+    staging:
+      +schema: tennis_silver
+      +materialized: view
+    intermediate:
+      +schema: tennis_silver
+      +materialized: view
+    marts:
+      +schema: tennis_gold
+      +materialized: table

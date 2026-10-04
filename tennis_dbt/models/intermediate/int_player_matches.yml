@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: int_player_matches
+    description: >
+      One row per player per match (each match produces 2 rows). Base grain
+      for every player-centric gold model.
+    columns:
+      - name: match_id
+        data_tests:
+          - not_null
+      - name: player_id
+        data_tests:
+          - not_null
+      - name: won
+        data_tests:
+          - not_null

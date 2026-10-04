@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_atp_matches
+    description: >
+      Typed, deduplicated ATP matches (2015-2025). Expect 30,707 rows after
+      dedup (10 duplicate matches removed from the 30,717-row source).
+    columns:
+      - name: match_id
+        description: Business key. tourney_id-match_num, or an md5 hash when match_num is null.
+        data_tests:
+          - unique
+          - not_null
+      - name: winner_id
+        data_tests:
+          - not_null
+      - name: loser_id
+        data_tests:
+          - not_null
+      - name: tourney_date
+        data_tests:
+          - not_null
